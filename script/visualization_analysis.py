@@ -1,18 +1,28 @@
-from textblob import TextBlob
-from matplotlib import pyplot as plt
 import pandas as pd
+import matplotlib.pyplot as plt
+from script.sentiment_analysis import get_sentiment
+from script.fetch_comments import fetch_comments
 
-#function to visualize the sentiment distribution
+# Input video URL
+video_url = input("Enter the video URL: ")
+
+# Fetch comments from YouTube
+comments = fetch_comments(video_url)
+
+# Analyze the sentiment of the comments
+sentiment_results = get_sentiment(comments)
+
+# Function to visualize the sentiment distribution
 def visualize_sentiments(sentiment_results):
-    #count the number of each sentiment
-    
+    # Count the number of each sentiment
     sentiment_count = pd.Series(sentiment_results).value_counts()
-    
-    #plot the sentiment distribution
+
+    # Plot the sentiment distribution
     sentiment_count.plot(kind='bar', color=['red', 'blue', 'green'])
     plt.title('Sentiment Distribution')
     plt.xlabel('Sentiment')
     plt.ylabel('Count')
     plt.show()
 
+# Visualize sentiment distribution
 visualize_sentiments(sentiment_results)
