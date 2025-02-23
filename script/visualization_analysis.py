@@ -1,7 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from script.sentiment_analysis import get_sentiment
-from script.fetch_comments import fetch_comments
+from sentiment_analysis import get_sentiment
+from fetch_comments import fetch_comments
+
 
 # Input video URL
 video_url = input("Enter the video URL: ")
